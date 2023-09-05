@@ -1,2 +1,4 @@
 #!/bin/bash
-cut -d ':'-f 1,6 /etc/passwd | sort
+while IFS=: read -r username _ _ _ _ home_directory _; do
+    echo "User: $username | Home Directory: $home_directory"
+done < /etc/passwd | sort -t ':' -k 1
