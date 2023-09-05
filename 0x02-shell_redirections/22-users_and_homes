@@ -1,4 +1,2 @@
 #!/bin/bash
-while IFS=: read -r username _ _ _ _ home_directory _; do
-    echo "User: $username | Home Directory: $home_directory"
-done < /etc/passwd | sort -t ':' -k 1
+awk -F: '{print "User: "$1" | Home Directory: "$6}' /etc/passwd | sort -t ':' -k 1
