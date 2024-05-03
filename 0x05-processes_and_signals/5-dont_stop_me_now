@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Kills a process containing "beyond" in its command
+
+kill "$(ps -x | pgrep -f beyond)"
+
