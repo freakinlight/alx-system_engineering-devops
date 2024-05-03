@@ -4,5 +4,5 @@
 # Display in a user-oriented format
 # Show process hierarchy
 
-pstree -a -p -u
+ps -a -x -u -f
 
