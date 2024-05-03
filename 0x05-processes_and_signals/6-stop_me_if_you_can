@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Kills processes with the pattern "beyond" in their command without using 'kill' or 'killall'
+
+pkill -f beyond
+
