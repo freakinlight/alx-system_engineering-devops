@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Kills the process named "highlander" using SIGKILL (9)
+
+kill -9 "$(pgrep -f highlander)"
+
