@@ -5,11 +5,11 @@
 IP="${1}"
 
 # Filename variable
-filename=$(basename "${BASH_SOURCE[@]}")
+f=$(basename "${BASH_SOURCE[@]}")
 
 # Checking if IP address is provided
 if ! [ "$IP" ]; then
-	echo "Usage: ${filename} {IP_ADDRESS}"
+	echo "Usage: ${f} {IP_ADDRESS}"
 else
 	ping -c 5 "${IP}"
 fi
