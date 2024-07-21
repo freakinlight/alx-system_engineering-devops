@@ -1,0 +1,37 @@
+What Happens When You Type https://www.google.com and Press Enter?
+
+Ever wondered what magic happens behind the scenes when you type a URL like https://www.google.com into your browser and hit Enter? It might seem simple, but a complex series of events unfolds in the background, ensuring that Google's homepage appears on your screen almost instantaneously. Let’s break down this process, to give you a peek under the hood of the internet's daily operations.
+
+1. DNS Request
+
+The journey begins with a DNS (Domain Name System) request. When you type https://www.google.com, your browser needs to translate this human-readable address into a machine-friendly IP address. It checks if this information is already cached; if not, it sends a query to your network's DNS server to find the IP address associated with www.google.com.
+
+2. TCP/IP
+
+Once the IP address is known, your computer uses TCP/IP (Transmission Control Protocol/Internet Protocol) to establish a connection with Google’s server. TCP manages the packet sending and receiving, ensuring that all data sent is correctly received and in the right order, while IP handles the actual delivery of the packets.
+
+3. Firewall
+
+Before any packets can be sent or received, they must pass through a firewall. This is a security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules, helping to block unauthorized access while allowing legitimate communications.
+
+4. HTTPS/SSL
+
+Communication over the internet needs to be secure to prevent eavesdropping and tampering. HTTPS, along with SSL (Secure Sockets Layer) or TLS (Transport Layer Security), creates a secure channel over an insecure network. This ensures that all data passed between the web server and browsers remains private and integral.
+
+5. Load Balancer
+
+As the request reaches Google’s infrastructure, it encounters a load balancer. Given the vast amount of traffic Google handles, this tool distributes the incoming network traffic across multiple servers. This not only ensures no single server bears too much load but also helps in achieving high availability and reliability.
+
+6. Web Server
+
+The load balancer forwards your request to one of the available web servers. A web server’s job is to accept incoming requests and respond with the appropriate content. In this case, it fetches the main HTML file of Google’s homepage.
+
+7. Application Server
+
+While the web server handles the static aspects of a website, the application server deals with the dynamic content by executing server-side scripts or backend applications. For Google’s homepage, it might be relatively static, but an application server could still be used for logging user interactions or generating personalized content.
+
+8. Database
+
+If any part of your request requires data retrieval, like fetching your personalized settings or recent searches, the application server will query a database. This is where data related to users and their interactions is stored and managed.
+
+From DNS queries to secure data transmission, and finally, the loading of the webpage, each step in this process involves complex interactions between various technologies. Understanding these components not only helps software engineers to troubleshoot and optimize websites but also enhances their ability to design robust and efficient web solutions.
