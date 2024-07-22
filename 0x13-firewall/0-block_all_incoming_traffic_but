@@ -1,0 +1,21 @@
+nstall UFW
+sudo apt update
+sudo apt install ufw
+
+# Enable UFW
+sudo ufw enable
+
+# Set default rule to block all incoming connections
+sudo ufw default deny incoming
+
+# Allow incoming SSH connections
+sudo ufw allow 22/tcp
+
+# Allow incoming HTTP connections
+sudo ufw allow 80/tcp
+
+# Allow incoming HTTPS connections
+sudo ufw allow 443/tcp
+
+# Verify the rules
+sudo ufw status verbose
