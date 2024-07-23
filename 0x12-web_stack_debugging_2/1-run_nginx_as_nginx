@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Configures Nginx to run as the 'nginx' user and listen on port 8080
+
+# Ensure nginx is installed
+if ! command -v nginx &> /dev/null; then
+    echo "Nginx is not installed."
+    exit 1
+fi
+
+# Update nginx.conf to run as nginx user
+sed -i 's/user www-data;/user nginx;/' /etc/nginx/nginx.conf
+
+# Update server block to listen on port 8080
+sed -i 's/listen 80;/listen 8080;/' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+service nginx restart
+
+# Check the status of Nginx
+echo "Checking the status of Nginx..."
+ps auxff | grep ngin[x]
