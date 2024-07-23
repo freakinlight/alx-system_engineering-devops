@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Ensures nginx runs as the nginx user
+getent passwd nginx || useradd -r -s /bin/false nginx
+sed -i 's/user www-data;/user nginx;/' /etc/nginx/nginx.conf
+nginx -t && service nginx restart
