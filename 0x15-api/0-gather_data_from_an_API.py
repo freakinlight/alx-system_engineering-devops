@@ -26,6 +26,7 @@ def fetch_data(employee_id):
         if task['completed']:
             print(f"\t {task['title']}")
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: ./0-gather_data_from_an_API.py <employee id>")
