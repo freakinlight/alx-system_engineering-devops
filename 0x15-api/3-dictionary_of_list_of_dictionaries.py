@@ -25,37 +25,34 @@ def get_all_employees_todo_progress():
 
         all_tasks = {}
 
+        # Pre-initialize dictionary for all users to handle users with no tasks
         for user in users_data:
             user_id = str(user.get('id'))
-            username = user.get('username')
+            all_tasks[user_id] = []  # Initialize each user with an empty list of tasks
 
-            # Fetch user's TODO list
-            todos_url = (
-                f'https://jsonplaceholder.typicode.com/todos?userId={user_id}'
-            )
-            todos_response = requests.get(todos_url)
-            todos_data = todos_response.json()
+        # Populate tasks for each user
+        todos_url = 'https://jsonplaceholder.typicode.com/todos'
+        todos_response = requests.get(todos_url)
+        todos_data = todos_response.json()
 
-            tasks = []
-            for task in todos_data:
-                tasks.append({
-                    "task": task.get('title'),
-                    "completed": task.get('completed'),
-                    "username": username
-                })
-
-            all_tasks[user_id] = tasks
+        for task in todos_data:
+            user_id = str(task.get('userId'))
+            task_info = {
+                "task": task.get('title'),
+                "completed": task.get('completed'),
+                "username": next(user.get('username') for user in users_data if user.get('id') == task.get('userId'))
+            }
+            all_tasks[user_id].append(task_info)
 
         # Write data to JSON file
         json_filename = "todo_all_employees.json"
-        with open(json_filename, mode='w') as json_file:
+        with open(json_filename, 'w') as json_file:
             json.dump(all_tasks, json_file)
 
         print(f"Data exported to {json_filename}")
 
     except Exception as e:
         print(f"An error occurred: {e}")
-
 
 if __name__ == "__main__":
     get_all_employees_todo_progress()
