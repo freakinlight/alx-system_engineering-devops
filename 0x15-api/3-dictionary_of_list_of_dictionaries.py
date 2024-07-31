@@ -26,7 +26,7 @@ def get_all_employees_todo_progress():
         all_tasks = {}
 
         for user in users_data:
-            user_id = user.get('id')
+            user_id = str(user.get('id'))
             username = user.get('username')
 
             # Fetch user's TODO list
@@ -35,10 +35,6 @@ def get_all_employees_todo_progress():
             )
             todos_response = requests.get(todos_url)
             todos_data = todos_response.json()
-
-            if not todos_data:
-                print(f"No TODOs found for employee ID {user_id}")
-                continue
 
             tasks = []
             for task in todos_data:
