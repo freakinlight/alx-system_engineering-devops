@@ -1,14 +1,7 @@
-# This Puppet manifest fixes an issue causing a 500 Internal Server Error on Apache.
+# Fixes 'phpp' typos by replacing with 'php'.
 
-file { '/var/www/html':
-  ensure => 'directory',
-  owner  => 'www-data',
-  group  => 'www-data',
-  mode   => '0755',
+exec { 'fix_phpp':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => ['/bin', '/usr/bin/', '/usr/loca/bin/'],
 }
 
-service { 'apache2':
-  ensure  => 'running',
-  enable  => true,
-  require => File['/var/www/html'],
-}
