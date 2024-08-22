@@ -1,4 +1,4 @@
-# This manifest configures the Apache web server.
+# Increases how much of traffic an Nginx server can handle.
 
 # Increase Nginx file descriptor limit
 exec { 'adjust-nginx-ulimit':
